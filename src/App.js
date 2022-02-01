@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-
+import Login from './components/auth/Login'
 // Redux imports
 import { store, persistor } from './redux/store';
 import Navbar from './components/layout/Navbar';
@@ -14,7 +14,7 @@ function App() {
         <Router>
           <Navbar />
           <div className='App px-5'>
-            <Routes>login</Routes>
+            <Routes><Route exact path='/' component={Login} /></Routes>
           </div>
         </Router>
       </PersistGate>
