@@ -5,14 +5,14 @@ import PropTypes from 'prop-types';
 
 import { FormInput } from '../reusable/FormInput';
 import { Button } from '../reusable/Button';
-
+import { validateInputs } from '../../helpers/Helpers';
+import { loginUser } from '../../redux/actions/auth';
+import './Auth.css';
 
 import './Auth.css';
 
-
-
 const Login = props => {
-
+    const { loginUser, isAuthenticated, history, errors } = props;
 
     const [user, setUser] = useState({
         data: {
@@ -29,16 +29,37 @@ const Login = props => {
     const { username, password } = user.data;
     const { usernameError, passwordError } = error;
 
-    
+    useEffect(() => {
+        if (isAuthenticated) {
+            history.push('/dashboard');
+        }
+    }, [isAuthenticated, history]);
 
-    
+    const onLoginUser = e => {
+        e.preventDefault();
 
-   
+        const isValid = validateInputs(user.data, setError);
+
+        if (isValid) {
+            loginUser(user.data);
+        }
+    };
+
+    const onChange = e => {
+        const { name, value } = e.target;
+        const { data } = user;
+        setUser({
+            data: {
+                ...data,
+                [name]: value
+            }
+        });
+    };
 
     return (
         <div className='auth-wrapper'>
             <div className='auth-inner'>
-                <form>
+                <form onSubmit={onLoginUser}>
                     <h3>Sign In</h3>
 
                     <div className='form-group'>
@@ -50,7 +71,7 @@ const Login = props => {
                             placeholder='Enter Username'
                             value={username}
                             error={usernameError}
-                           
+                            onChange={onChange}
                         />
                     </div>
                     <div className='form-group'>
@@ -62,7 +83,7 @@ const Login = props => {
                             placeholder='Enter Password'
                             value={password}
                             error={passwordError}
-                           
+                            onChange={onChange}
                         />
                     </div>
 
@@ -77,7 +98,7 @@ const Login = props => {
                     </p>
                 </form>
 
-                
+                {errors ? <p className='error-feedback'>{errors}</p> : ''}
             </div>
         </div>
     );
@@ -89,6 +110,12 @@ Login.propTypes = {
     errors: PropTypes.string
 };
 
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated,
+    errors: state.errors
+});
 
-
-export default Login;
+export default connect(
+    mapStateToProps,
+    { loginUser }
+)(Login);

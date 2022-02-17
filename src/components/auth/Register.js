@@ -6,11 +6,12 @@ import PropTypes from 'prop-types';
 import { FormInput } from '../reusable/FormInput';
 import { RadioInput } from '../reusable/RadioInput';
 import { Button } from '../reusable/Button';
-
+import { validateInputs } from '../../helpers/Helpers';
+import { createUser } from '../../redux/actions/auth';
 import './Auth.css';
 
 const Register = props => {
-    
+    const { createUser, isAuthenticated, history, errors } = props;
 
     const [user, setUser] = useState({
         data: {
@@ -26,19 +27,40 @@ const Register = props => {
         roleError: ''
     });
 
-    
+    useEffect(() => {
+        if (isAuthenticated) {
+            history.push('/dashboard');
+        }
+    }, [isAuthenticated, history]);
 
     const { username, password } = user.data;
     const { usernameError, passwordError, roleError } = error;
 
-    
+    const onRegisterUser = e => {
+        e.preventDefault();
 
-    
+        const isValid = validateInputs(user.data, setError);
+
+        if (isValid) {
+            createUser(user.data);
+        }
+    };
+
+    const onChange = e => {
+        const { name, value } = e.target;
+        const { data } = user;
+        setUser({
+            data: {
+                ...data,
+                [name]: value
+            }
+        });
+    };
 
     return (
         <div className='auth-wrapper'>
             <div className='auth-inner'>
-                <form>
+                <form onSubmit={onRegisterUser}>
                     <h3>Sign Up</h3>
 
                     <div className='form-group'>
@@ -50,7 +72,7 @@ const Register = props => {
                             placeholder='Enter Username'
                             value={username}
                             error={usernameError}
-                            
+                            onChange={onChange}
                         />
                     </div>
                     <div className='form-group'>
@@ -62,7 +84,7 @@ const Register = props => {
                             placeholder='Enter Password'
                             value={password}
                             error={passwordError}
-                           
+                            onChange={onChange}
                         />
                     </div>
                     <div className='form-group'>
@@ -76,7 +98,7 @@ const Register = props => {
                                 className='form-check-input'
                                 value='User'
                                 error={roleError}
-                                
+                                onChange={onChange}
                             />
                         </div>
                         <div className='form-check form-check-inline'>
@@ -87,7 +109,7 @@ const Register = props => {
                                 className='form-check-input'
                                 value='Admin'
                                 error={roleError}
-                                
+                                onChange={onChange}
                             />
                         </div>
                     </div>
@@ -101,7 +123,7 @@ const Register = props => {
                         Already registered? <Link to={'/sign-in'}>Login</Link>
                     </p>
                 </form>
-               
+                {errors ? <p className='error-feedback'>{errors}</p> : ''}
             </div>
         </div>
     );
@@ -113,6 +135,12 @@ Register.propTypes = {
     errors: PropTypes.string
 };
 
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated,
+    errors: state.errors
+});
 
-
-export default Register;
+export default connect(
+    mapStateToProps,
+    { createUser }
+)(Register);
