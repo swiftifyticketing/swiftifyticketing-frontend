@@ -6,6 +6,8 @@ import { LOGOUT } from '../types';
 
 import authReducer from './authReducer';
 import errorReducer from './errorReducer';
+import modalReducer from './modalReducer';
+import ticketReducer from './ticketReducer';
 import userReducer from './userReducer';
 
 const persistConfig = {
@@ -16,6 +18,8 @@ const persistConfig = {
 const appReducers = combineReducers({
     auth: authReducer,
     errors: errorReducer,
+    modal: modalReducer,
+    tickets: ticketReducer,
     user: userReducer
 });
 

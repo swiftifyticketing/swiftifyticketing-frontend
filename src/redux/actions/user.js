@@ -18,3 +18,21 @@ export const getUser = () => async dispatch => {
         }
     }
 };
+
+export const getUserTickets = () => async dispatch => {
+    try {
+        const userData = await getUserData();
+        const { tickets } = userData.data.user;
+        dispatch({
+            type: GET_USER_TICKETS,
+            payload: tickets
+        });
+    } catch (error) {
+        if (error.response) {
+            dispatch({
+                type: SET_ERROR,
+                payload: error.response.data.message
+            });
+        }
+    }
+};
