@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 
 // Import components
+import Home from "./components/auth/Home"
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Dashboard from "./components/main/dashboard/Dashboard";
@@ -28,7 +29,7 @@ function App() {
                 path='/dashboard/tickets/:status/:type'
                 component={FilteredTable}
               />
-              <Route exact path='/' component={Login} />
+              <Route exact path='/' component={Home} />
               <Route exact path='/sign-in' component={Login} />
               <Route exact path='/sign-up' component={Register} />
             </Switch>
