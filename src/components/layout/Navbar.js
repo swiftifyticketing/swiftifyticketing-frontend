@@ -40,23 +40,34 @@ const Navbar = props => {
     return (
         <>
             {isAuthenticated ? (
-                <div className='navbar'>
-                    <div className='container'>
-                        <Link to={'/dashboard'} className='navbar-brand'>
-                            Facility App
-                        </Link>
-                        <div className='collapses navbar-collapses'>
-                            <ul className='navbar-nav ml-auto'>
+                <nav className='navbar'>
+                <div className='navbar-container'>
+                    <Link to={'/'} className='navbar-logo'>
+                        <img className='icon' alt='logo' src='public\..\SwiftifyTicketingIcon.png' height={80} width={175} />
+                    </Link>
+                    <div className='menu-icon' onClick={handleClick}>
+                        <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
+                    </div>
+                    <ul className={click ? 'nav-menu active' : 'nav-menu'}>
+                        <li className='nav-item'>
+                            <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+                                Home
+                            </Link>
+                        </li>
+                        <li className='nav-item'>
+                            <Link to='/dashboard' className='nav-links' onClick={closeMobileMenu}>
+                                Dashboard
+                            </Link>
+                        </li>
                                 <li className='nav-item'>
-                                    <a href='#!' onClick={() => logoutUser()}>
+                                    <a className = 'nav-links' href='#!'  onClick={function() { logoutUser(); closeMobileMenu();}}>
                                         <i className='fas fa-sign-out-alt'></i>{' '}
                                         <span>Logout</span>
                                     </a>
                                 </li>
                             </ul>
                         </div>
-                    </div>
-                </div>
+                    </nav>
             ) : (
                 <nav className='navbar'>
                     <div className='navbar-container'>
