@@ -124,9 +124,9 @@ const AddTicketForm = props => {
                     <FormInput
                         type='text'
                         name='subject'
-                        label='Subject'
+                        label='Classroom Number'
                         className='form-control'
-                        placeholder='Enter Subject'
+                        placeholder='Enter Classroom Number'
                         value={subject}
                         error=''
                         onChange={onChange}
