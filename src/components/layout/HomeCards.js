@@ -22,19 +22,19 @@ function HomeCards() {
                 </ul>
                 <ul className='cards__items'>
                 <HomeCardItem
-                    src='public\..\Image1.jpg'
-                    text='Create and Edit Your Own Tickets'
-                    label = 'Create'
+                    src='public\..\Image3.jpg'
+                    text='Give Teachers the Peace of Mind to Focus on Teaching'
+                    label = 'Balance'
                     path = '/sign-up'/>
                     <HomeCardItem
-                    src='public\..\Image1.jpg'
-                    text='Create and Edit Your Own Tickets'
-                    label = 'Create'
+                    src='public\..\Image4.jpg'
+                    text='Works for Any Location You Want Regardless of Building or Classroom'
+                    label = 'Versatility'
                     path = '/sign-up'/>
                     <HomeCardItem
-                    src='public\..\Image1.jpg'
-                    text='Create and Edit Your Own Tickets'
-                    label = 'Create'
+                    src='public\..\Image5.png'
+                    text='Allow Teachers and Maintenance Staff to Work Together to Build a Better Learning Environment'
+                    label = 'Build'
                     path = '/sign-up'/>
                 </ul>
             </div>
