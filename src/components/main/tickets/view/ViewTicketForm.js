@@ -60,7 +60,7 @@ const ViewTicketForm = props => {
                 <p>{priority}</p>
             </div>
             <div className='view-ticket mb-1'>
-                <p className='primary-color font-weight-bold mb-1'>Subject:</p>
+                <p className='primary-color font-weight-bold mb-1'>Classroom Number:</p>
                 <p>{subject}</p>
             </div>
             <div className='view-ticket mb-1'>

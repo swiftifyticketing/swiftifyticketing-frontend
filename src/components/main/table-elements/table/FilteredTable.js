@@ -28,7 +28,7 @@ const API_ENDPOINT = apiEndPoint();
 const TABLE_HEAD = [
   "ID #",
   "Full Name",
-  "Subject",
+  "Classroom Number",
   "Priority",
   "Status",
   "Created At",
