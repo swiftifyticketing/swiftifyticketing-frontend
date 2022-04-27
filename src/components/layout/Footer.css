@@ -22,8 +22,9 @@
   .footer-social-media__icon {
       align-items: center;
     /* margin: 2px 2px; */
-    width: 160px;
+    width: 170px;
     height: 100%;
+    
   }
   
   .footer-info  {
