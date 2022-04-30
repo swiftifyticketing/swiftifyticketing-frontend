@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 import { FormInput } from "../reusable/FormInput";
-import { RadioInput } from "../reusable/RadioInput";
 import { Button } from "../reusable/Button";
 import { validateInputs } from "../../helpers/Helpers";
 import { createUser } from "../../redux/actions/auth";
@@ -34,6 +33,7 @@ const Register = (props) => {
   }, [isAuthenticated, history]);
 
   const { username, password } = user.data;
+  // eslint-disable-next-line no-unused-vars
   const { usernameError, passwordError, roleError } = error;
 
   const onRegisterUser = (e) => {
