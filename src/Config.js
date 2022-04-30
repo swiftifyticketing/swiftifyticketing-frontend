@@ -1,12 +1,12 @@
 export const apiEndPoint = () => {
-    return 'http://localhost:5000';
+  return "https://swiftifyticketing-backend.herokuapp.com";
 };
 
 export const configHeader = () => {
-    const config = {
-        headers: {
-            'Content-type': 'application/json'
-        }
-    };
-    return config;
+  const config = {
+    headers: {
+      "Content-type": "application/json",
+    },
+  };
+  return config;
 };
