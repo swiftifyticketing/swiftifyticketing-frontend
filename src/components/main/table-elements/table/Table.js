@@ -102,7 +102,6 @@ const Table = (props) => {
               <th key={i} className='font-weight-medium'>
                 {tableHead} &nbsp;&nbsp;
                 <FaAngleUp />
-                <i className='fas fa-angle-up icon'></i>
               </th>
             ))}
           </tr>
