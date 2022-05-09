@@ -26,6 +26,7 @@ const TABLE_HEAD = [
   "ID #",
   "Full Name",
   "Classroom Number",
+  "Building Name",
   "Priority",
   "Status",
   "Created At",
@@ -135,6 +136,15 @@ const Table = (props) => {
                 }
               >
                 {ticket.subject}
+              </td>
+              <td
+                className={
+                  user && user._id === ticket.user
+                    ? "font-weight-bold"
+                    : "text-dark"
+                }
+              >
+                {ticket.facility}
               </td>
               <td>
                 {ticket.priority === "High" ? (
