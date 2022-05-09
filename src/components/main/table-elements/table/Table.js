@@ -62,7 +62,10 @@ const Table = (props) => {
   // Set search contents hook
   useEffect(() => {
     const result = tickets.filter((search) => {
-      return search.fullname.toLowerCase().includes(searchTerm);
+      return (
+        search.fullname.toLowerCase().includes(searchTerm) ||
+        search.facility.toLowerCase().includes(searchTerm)
+      );
     });
     setTableTickets(result);
   }, [tickets, setTableTickets, searchTerm]);
