@@ -94,7 +94,7 @@ const Table = (props) => {
     <div className='col-sm-12 table-responsive'>
       <input
         type='text'
-        placeholder='Search for a name...'
+        placeholder='Search for a name or building name...'
         value={searchTerm}
         onChange={handleChange}
         className='form-control py-2 px-2 mb-3 search-bar'
