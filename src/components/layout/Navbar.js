@@ -90,14 +90,17 @@ const Navbar = (props) => {
                 className='icon'
                 alt='logo'
                 src='public\..\SwiftifyTicketingIcon.png'
-                height={80}
-                width={175}
+                height={50}
+                width={145}
               />
             </Link>
             <div className='menu-icon' onClick={handleClick}>
               <i className={click ? "fas fa-times" : "fas fa-bars"} />
             </div>
-            <ul className={click ? "nav-menu active" : "nav-menu"}>
+            <ul
+              className={click ? "nav-menu active" : "nav-menu"}
+              style={{ listStyle: "none" }}
+            >
               <li className='nav-item'>
                 <Link to='/' className='nav-links' onClick={closeMobileMenu}>
                   Home

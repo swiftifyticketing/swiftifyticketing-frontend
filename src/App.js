@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 
 // Import components
-import Home from "./components/auth/Home"
+import Home from "./components/auth/Home";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Dashboard from "./components/main/dashboard/Dashboard";
@@ -34,7 +34,6 @@ function App() {
               <Route exact path='/sign-up' component={Register} />
             </Switch>
           </div>
-          ;
         </Router>
       </PersistGate>
     </Provider>
